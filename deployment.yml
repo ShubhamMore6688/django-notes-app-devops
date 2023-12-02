@@ -1,0 +1,21 @@
+metadata:
+  name: django-deployment
+  labels:
+    app: django-lable
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: django-lable
+
+  template:
+    metadata:
+      name: django-app
+      labels:
+        app: django-lable
+    spec:
+      containers:
+        - name: django-con
+          image: trainwithshubham/django-todo:latest
+          ports:
+            - containerPort: 8000
